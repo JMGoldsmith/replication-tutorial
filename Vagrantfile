@@ -4,12 +4,13 @@ Vagrant.configure("2") do |config|
 
   (1..VAULT_NODE_COUNT).each do |i|
     config.vm.define "vault-#{i}" do |node|
-    config.vm.box = "ubuntu/bionic64"
-    config.vm.provision "file", source: "config.hcl", destination: "$HOME/config.hcl"
-    config.vm.provision "shell",
-      path: "install_vault.sh",
-      env: {"VAULT_RAFT_NODE_ID" => "raft_node_#{i}"}
-    end
+      node.vm.box = "ubuntu/bionic64"
+      node.vm.network "private_network", ip: "192.168.50.1#{i}"
+      node.vm.provision "shell",
+        path: "install_vault.sh",
+        env: {"ID" => "#{i}"},
+        env: {"HOSTIP" => "192.168.50.1#{i}"}
+      end
   end
 
 end
