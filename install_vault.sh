@@ -17,7 +17,7 @@ listener "tcp" {
   tls_disable = 1
 }
 
-licence_path="/opt/vault/vault.hclic"
+license_path="/opt/vault/vault.hclic"
 
 storage "raft" {
   path = "/opt/vault/data"
@@ -34,5 +34,8 @@ storage "raft" {
 }
 
 cluster_addr = "http://$HOSTIP:8201"
-api_addr = "http://$HOSTIP:8200"
+api_addr = "http://127.0.0.1:8200"
 EOF
+
+mv /home/vagrant/vault.hclic /opt/vault/vault.hclic
+chown vault: /opt/vault/vault.hclic

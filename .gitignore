@@ -1,3 +1,4 @@
 .vagrant/*
 *.log
 vault.hclic
+keys.txt
