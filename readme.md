@@ -12,6 +12,8 @@ Run `vagrant provision --provision-with shell`
 
 # Todo:
 
+Move license to non-git commited file.
+
 Add auto-unseal for AWS, GCP, Azure and Transit. Can also use soft HSM if needed.
 Create TF for each type of seal.
 Move this in to AWS. https://github.com/mitchellh/vagrant-awss
