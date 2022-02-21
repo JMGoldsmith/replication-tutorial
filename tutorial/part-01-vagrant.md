@@ -8,3 +8,6 @@
 
 ## Your license file
 
+## unsealing 
+
+vault operator init -key-shares=1 -key-threshold=1

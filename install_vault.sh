@@ -17,8 +17,10 @@ listener "tcp" {
   tls_disable = 1
 }
 
+licence_path="/home/vagrant/vault.hclic"
+
 storage "raft" {
-  path = "/raft/data"
+  path = "/opt/vault/data"
   node_id = "raft_node_$ID"
   retry_join {
     leader_api_addr = "http://192.168.50.11:8200"
@@ -32,4 +34,5 @@ storage "raft" {
 }
 
 cluster_addr = "http://$HOSTIP:8201"
+api_addr = "http://$HOSTIP:8200"
 EOF

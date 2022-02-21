@@ -5,7 +5,7 @@ vagrantfile adjustments
 env additions.
 
 ## Scripting
-
+vagrant provision --provision-with shell
 env vars passthrough.
 
 ## Networking
