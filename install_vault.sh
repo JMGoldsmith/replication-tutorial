@@ -6,7 +6,7 @@ sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(l
 sudo apt-get update && sudo apt-get install vault-enterprise
 sudo apt-get -y install jq
 sudo apt-get -y install tree
-
+echo 'export VAULT_ADDR=http://127.0.0.1:8200' >> /home/vagrant/.bashrc
 # cmod 700 /home/vagrant
 
 # set up license.
@@ -22,6 +22,7 @@ license_path="/opt/vault/vault.hclic"
 storage "raft" {
   path = "/opt/vault/data"
   node_id = "raft_node_$ID"
+  leader_api_addr = "http://192.168.50.11:8201"
   retry_join {
     leader_api_addr = "http://192.168.50.11:8200"
   }

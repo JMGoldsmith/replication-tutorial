@@ -9,6 +9,8 @@ vagrant provision --provision-with shell
 env vars passthrough.
 
 ## Networking
+public_network
+bridge adapter.
 
 ## Config file
 
