@@ -11,8 +11,7 @@ To change the config, update the config in the `install_vault.sh` file.
 Run `vagrant provision --provision-with shell`
 
 # Todo:
-
-Move license to non-git commited file.
+Set up variables as args, not env.
 
 Add auto-unseal for AWS, GCP, Azure and Transit. Can also use soft HSM if needed.
 Create TF for each type of seal.

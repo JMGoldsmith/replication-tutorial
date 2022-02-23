@@ -6,7 +6,9 @@ env additions.
 
 ## Scripting
 vagrant provision --provision-with shell
-env vars passthrough.
+env vars passthrough. - can use args
+Bash for getting the hostname
+
 
 ## Networking
 public_network

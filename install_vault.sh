@@ -8,7 +8,8 @@ sudo apt-get -y install jq
 sudo apt-get -y install tree
 echo 'export VAULT_ADDR=http://127.0.0.1:8200' >> /home/vagrant/.bashrc
 # cmod 700 /home/vagrant
-
+export HOSTIP=$(hostname -I | cut -d' ' -f2)
+export ID=$(echo ${HOSTIP: -1})
 # set up license.
 
 tee > /etc/vault.d/vault.hcl << EOF
