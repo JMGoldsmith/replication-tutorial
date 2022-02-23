@@ -8,7 +8,8 @@ env additions.
 vagrant provision --provision-with shell
 env vars passthrough. - can use args
 Bash for getting the hostname
-
+systemd
+go through current script and itemize each line.
 
 ## Networking
 public_network
