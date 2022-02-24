@@ -11,7 +11,8 @@ To change the config, update the config in the `install_vault.sh` file.
 Run `vagrant provision --provision-with shell`
 
 # Todo:
-Set up variables as args, not env.
+Move to final folders, start writing docs.
+
 
 Add auto-unseal for AWS, GCP, Azure and Transit. Can also use soft HSM if needed.
 Create TF for each type of seal.

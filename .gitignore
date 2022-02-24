@@ -1,4 +1,4 @@
 .vagrant/*
 *.log
-vault.hclic
-keys.txt
+*/vault.hclic
+*/keys.txt

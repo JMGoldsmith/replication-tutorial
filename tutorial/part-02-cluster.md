@@ -19,3 +19,5 @@ bridge adapter.
 
 ## Unsealing
 
+## Retry joins
+emphasize not including the existing node.

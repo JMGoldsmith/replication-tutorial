@@ -25,12 +25,15 @@ license_path="/opt/vault/vault.hclic"
 storage "raft" {
   path = "/opt/vault/data"
   node_id = "raft_node_$ID"
-  leader_api_addr = "http://192.168.50.11:8200"
+  leader_api_addr = "http://192.168.50.21:8200"
   retry_join {
-    leader_api_addr = "http://192.168.50.12:8200"
+    leader_api_addr = "http://192.168.50.21:8200"
   }
   retry_join {
-    leader_api_addr = "http://192.168.50.13:8200"
+    leader_api_addr = "http://192.168.50.22:8200"
+  }
+  retry_join {
+    leader_api_addr = "http://192.168.50.23:8200"
   }
 }
 
