@@ -32,6 +32,8 @@ Now that you have your own VM, you will want to add some things to it. Normally 
 
 ### Installing Vault and other pieces
 
+In the install_vault.sh script, place the following:
+
 ```
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
@@ -42,8 +44,14 @@ sudo apt-get -y install tree
 export HOSTIP=$(hostname -I | cut -d' ' -f2)
 ```
 
+This will install the most recent version of Vault enterprise. If you need to change the version, ADD HOW TO HERE.....
+It will also install the tools `tree` and `jq`. You can install other items as needed.
+
 ### Setting up the Vault configuration file
 
+After the above stanza, you will want to add the following block as well. This will write you Vault configuration file to `/etc/vault.d/vault.hcl`. 
+
+```
 tee > /etc/vault.d/vault.hcl << EOF
 listener "tcp" {
   address = "$HOSTIP:8200"
@@ -53,6 +61,7 @@ listener "tcp" {
 license_path="/home/vagrant/vault.hclic"
 
 EOF
+```
 
 ### Setting it up in Vagrant
 
@@ -65,11 +74,11 @@ Vagrant.configure("2") do |config|
 end
 ```
 
-## Your license file
+### Your license file
 
 https://license.hashicorp.services/
 
-## Copying files.
+### Copying files.
 
 ```
 Vagrant.configure("2") do |config|
@@ -81,8 +90,10 @@ Vagrant.configure("2") do |config|
 end
 ```
 
+## Adding your script
 
+To add the changes you have made, simply run `vagrant provision`. As you add more files or do not wish to re-provision other existing pieces, simply run `vagrant provision --provision-with shell` to re-provision the `shell` provisioner or the other provisioners you have created.
 
 ## unsealing 
 
-vault operator init -key-shares=1 -key-threshold=1
+To unseal Vault, start the server using `vault server -config=/etc/vault.d/vault.hcl` and then `vault operator init -key-shares=1 -key-threshold=1`. This will initialize your single vault node and return 1 root token and one unseal key.
