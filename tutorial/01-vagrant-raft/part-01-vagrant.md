@@ -44,8 +44,8 @@ sudo apt-get -y install tree
 export HOSTIP=$(hostname -I | cut -d' ' -f2)
 ```
 
-This will install the most recent version of Vault enterprise. If you need to change the version, ADD HOW TO HERE.....
-It will also install the tools `tree` and `jq`. You can install other items as needed.
+This will install the most recent version of Vault enterprise. If you need to change the version, simply add an `=` to the end of the install binary, like `vault-enterprise=1.8.1+ent`.
+It will also install the tools `tree` and `jq`. You can install other items as needed by adding them to the script.
 
 ### Setting up the Vault configuration file
 
@@ -56,6 +56,10 @@ tee > /etc/vault.d/vault.hcl << EOF
 listener "tcp" {
   address = "$HOSTIP:8200"
   tls_disable = 1
+}
+
+storage "raft" {
+ path    = "$HOME/raft-vault/"
 }
 
 license_path="/home/vagrant/vault.hclic"
